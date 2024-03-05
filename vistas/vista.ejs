@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Fotos</title>
+</head>
+<body>
+    <h1>Conversor de Fotos</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="photo" id="photoInput" accept="image/*">
+        <button type="submit">Convertir</button>
+    </form>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData();
+            const fileInput = document.getElementById('photoInput');
+            formData.append('photo', fileInput.files[0]);
+            
+            try {
+                const response = await fetch('/convert', {
+                    method: 'POST',
+                    body: formData
+                });
+                const blob = await response.blob();
+
+                // Crear un enlace temporal y simular clic para descargar
+                const tempLink = document.createElement('a');
+                tempLink.href = URL.createObjectURL(blob);
+                tempLink.download = 'imagen_convertida.avif';
+                tempLink.click();
+            } catch (error) {
+                console.error('Error al convertir la imagen:', error);
+                alert('Error al convertir la imagen');
+            }
+        });
+    </script>
+</body>
+</html>
