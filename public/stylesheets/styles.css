@@ -1,0 +1,187 @@
+body {
+    font-family: sans-serif;
+}
+
+.titulo {
+    font-size: 24px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    text-align: center;
+    color: #e90729;
+    font-weight: bold;
+}
+
+form {
+    padding: 20px;
+    border-radius: 8px;
+    background-color: white;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: black;
+}
+
+input {
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    padding: 10px;
+    margin-top: 10px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#bloque_izquierda {
+    margin: 2% 0% 0% 2%;
+    float: left;
+    width: 30%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+#qr-container {
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+    display: grid;
+    gap: 10px;
+    padding: 40px 0% 0% 0%;
+}
+
+/* Estilos del contenedor */
+.contenedor-grande {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap: 20px;
+    padding: 1%;
+}
+
+.contenedor-grande p {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Estilos de la imagen */
+.imagen {
+    width: 600px;
+}
+
+#boton_descargacss {
+    background-color: #e90729;
+    color: white;
+    padding: 5%;
+}
+
+.boton_descargacss {
+    background-color: #e90729;
+    color: white;
+    padding: 2%;
+    margin: 20px 0px 0px 0px;
+}
+
+/* ESTILOS COMPRIMIR IMÃGENES */
+.container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin-top: 2%;
+    margin-left: 2%;
+    width: 30% !important;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+label {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+select,
+input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+progress {
+    margin-top: 3%;
+    margin-bottom: 6%;
+    width: 100%;
+    height: 30px;
+}
+
+#compressButton {
+    margin-top: 5%;
+}
+
+#n_carpeta {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.output {
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    gap: 5%;
+    align-items: center;
+}
+
+.output>a {
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+
+#reiniciar_compresion {
+    background-color: black;
+    color: white;
+    padding: 2%;
+}
+
+.progress-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background-color: #e90729;
+    border-radius: 10px;
+    transition: width 0.3s ease-in-out;
+}
+
+.progress-text {
+    font-size: 14px;
+    color: black;
+    font-weight: bold;
+}

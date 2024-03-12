@@ -1,41 +1,123 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor de Fotos</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="shortcut icon" href="/images/u.png" type="image/x-icon">
+    <title>Convertidor Avif | Impulso Cooperativo</title>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .app-store-badges img {
+            height: 40px;
+        }
+    </style>
 </head>
-<body>
-    <h1>Conversor de Fotos</h1>
-    <form id="uploadForm" enctype="multipart/form-data">
-        <input type="file" name="photo" id="photoInput" accept="image/*">
-        <button type="submit">Convertir</button>
-    </form>
 
-    <script>
-        document.getElementById('uploadForm').addEventListener('submit', async (event) => {
-            event.preventDefault();
-            const formData = new FormData();
-            const fileInput = document.getElementById('photoInput');
-            formData.append('photo', fileInput.files[0]);
+<body class="bg-gray-100">
+    <!-- Encabezado -->
+    <header class="bg-white py-4 shadow">
+        <div class="flex items-center gap-6">
+            <a href="index.html">
+                <img style="width: 150px; margin-left: 30px;" src="/images/impulso-cooperativo-logo.webp"
+                    alt="logo_impulso_cooperativo">
+            </a>
+            <!-- Navegación -->
+            <nav class="py-2">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between">
+                    <div class="flex space-x-4">
+                        <a href="generar_vcard.html">Generar vCard</a>
+                        <a href="generar_qr.html">Generar QR</a>
+                        <a href="comprimir_imagenes.html">Comprimir Imágenes</a>
+                        <a href="convertir_imagen_pdf.html">IMG to PDF</a>
+                        <a href="convertir_pdf_imagen.html">PDF to IMG</a>
+                        <a href="https://www.impulsocooperativo.com/contacto/" target="_blank">Contacto</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- Contenedor principal -->
+    <main style="height: 80vh;">
+        <!-- CONTENEDOR FORMULARIO IZQUIERDA -->
+        <div id="bloque_izquierda">
             
-            try {
-                const response = await fetch('/convert', {
-                    method: 'POST',
-                    body: formData
-                });
-                const blob = await response.blob();
-
-                // Crear un enlace temporal y simular clic para descargar
-                const tempLink = document.createElement('a');
-                tempLink.href = URL.createObjectURL(blob);
-                tempLink.download = 'imagen_convertida.avif';
-                tempLink.click();
-            } catch (error) {
-                console.error('Error al convertir la imagen:', error);
-                alert('Error al convertir la imagen');
-            }
-        });
-    </script>
+            
+            <form id="uploadForm" enctype="multipart/form-data">
+                <div class="titulo">Conversor Imagenes Avif</div>
+                <label for="name">Inserta la foto que desea convertir:</label>
+                <input type="file" name="photo" id="photoInput" accept="image/*">
+                <button class="boton_descargacss" type="submit">Convertir</button>
+            </form>
+        </div>
+        <script>
+            document.getElementById('uploadForm').addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const formData = new FormData();
+                const fileInput = document.getElementById('photoInput');
+                formData.append('photo', fileInput.files[0]);
+                
+                try {
+                    const response = await fetch('/convert', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const blob = await response.blob();
+    
+                    // Crear un enlace temporal y simular clic para descargar
+                    const tempLink = document.createElement('a');
+                    tempLink.href = URL.createObjectURL(blob);
+                    tempLink.download = 'imagen_convertida.avif';
+                    tempLink.click();
+                } catch (error) {
+                    console.error('Error al convertir la imagen:', error);
+                    alert('Error al convertir la imagen');
+                }
+            });
+        </script>
+    </main>
+    <footer class="bg-gray-200 text-gray-700 p-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h5 class="uppercase font-bold mb-2.5">Impulso Cooperativo</h5>
+                    <ul class="space-y-1">
+                        <li><a href="generar_vcard.html" class="hover:underline">Generar vCard</a></li>
+                        <li><a href="generar_qr.html" class="hover:underline">Generar QR</a></li>
+                        <li><a href="comprimir_imagenes.html" class="hover:underline">Comprimir Imágenes</a></li>
+                        <li><a href="convertir_imagen_pdf.html" class="hover:underline">IMG to PDF</a></li>
+                        <li><a href="convertir_pdf_imagen.html" class="hover:underline">PDF to IMG</a></li>
+                        <li><a href="https://www.impulsocooperativo.com/contacto/" class="hover:underline"
+                                target="_blank">Contacto</a>
+                    </ul>
+                </div>
+                <!-- Repeat for other columns "PRODUCT", "SOLUTIONS", "COMPANY" -->
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-end border-t pt-4 mt-4">
+                <div class="flex mb-4 md:mb-0">
+                    <img src="/images/u.png" alt="logo_impulso_pequeño" style="width: 50px;">
+                </div>
+                <div class="text-center md:text-left">
+                    <p>© Impulso Cooperativo 2024 • Herramientas Online</p>
+                </div>
+                <div class="flex items-center">
+                    <!-- Iconos redes sociales -->
+                    <a href="https://twitter.com/impulso_coop" target="_blank" class="mx-2">Twitter</a>
+                    <a href="https://www.facebook.com/impulsocooperativo/?locale=es_ES" target="_blank"
+                        class="mx-2">Facebook</a>
+                    <a href="https://es.linkedin.com/company/impulsocooperativo" target="_blank"
+                        class="mx-2">LinkedIn</a>
+                    <a href="https://www.instagram.com/impulsocoop/" target="_blank" class="mx-2">Instagram</a>
+                </div>
+            </div>
+        </div>
 </body>
+
+
+
 </html>
